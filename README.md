@@ -24,7 +24,7 @@ A modern, responsive portfolio website built with React, Three.js, and Tailwind 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/Anwar-Hussain-Portfolio.git
+git clone https://github.com/Aanwar04/Anwar-Hussain-Portfolio.git
 cd Anwar-Hussain-Portfolio
 ```
 
