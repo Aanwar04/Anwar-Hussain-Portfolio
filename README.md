@@ -2,6 +2,9 @@
 
 A modern, responsive portfolio website built with React, Three.js, and Tailwind CSS.
 
+
+Check out my [portfolio][https://aanwar-hussain-portfolio.netlify.app/].
+
 ## 🚀 Features
 
 - **3D Graphics**: Interactive 3D models using Three.js
@@ -40,7 +43,7 @@ npm install
 npm run dev
 ```
 
-4. Open [(https://aanwar-hussain-portfolio.netlify.app/)]in your browser.
+4. Open (https://aanwar-hussain-portfolio.netlify.app/) in your browser.
 
 ## 🚀 Deployment
 
