@@ -16,6 +16,7 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { target } = e;
@@ -30,6 +31,12 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
+
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+      setError("Taking longer than usual. Please try again or email me directly.");
+    }, 12000);
 
     emailjs
       .send(
@@ -47,6 +54,7 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
+          clearTimeout(timeoutId);
           alert("Thank you. I will get back to you as soon as possible.");
 
           setForm({
@@ -57,6 +65,7 @@ const Contact = () => {
         },
         (error) => {
           setLoading(false);
+          clearTimeout(timeoutId);
           console.error(error);
 
           alert("Ahh, something went wrong. Please try again.");
@@ -72,8 +81,8 @@ const Contact = () => {
         variants={slideIn("left", "tween", 0.2, 1)}
         className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
       >
-        <p className={styles.sectionSubText}>Get in touch</p>
-        <h3 className={styles.sectionHeadText}>Contact.</h3>
+        <p className={`${styles.sectionSubText} bg-gradient-to-r from-[#A78BFA] via-[#60A5FA] to-[#34D399] bg-clip-text text-transparent`}>Get in touch</p>
+        <h3 className={`${styles.sectionHeadText} bg-gradient-to-r from-[#915EFF] via-[#60A5FA] to-[#34D399] bg-clip-text text-transparent`}>Contact</h3>
 
         <form
           ref={formRef}
@@ -114,9 +123,13 @@ const Contact = () => {
             />
           </label>
 
+          <p className='desc-paragraph decorated text-[15px] leading-[26px]'>I usually reply within 24 hours. Feel free to share any details that help me understand your goals.</p>
+
+          {error && <p className='text-red-400 text-sm'>{error}</p>}
           <button
             type='submit'
-            className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+            className={`btn-gradient py-3 px-8 rounded-xl outline-none w-fit text-white font-bold ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+            disabled={loading}
           >
             {loading ? "Sending..." : "Send"}
           </button>
@@ -125,7 +138,7 @@ const Contact = () => {
 
       <motion.div
         variants={slideIn("right", "tween", 0.2, 1)}
-        className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
+        className='xl:flex-[1.25] xl:h-auto md:h-[550px] h-[350px]'
       >
         <EarthCanvas />
       </motion.div>

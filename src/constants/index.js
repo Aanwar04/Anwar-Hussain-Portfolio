@@ -28,6 +28,7 @@ import {
   threejs,
   flood1,
   flood2,
+  rider,
 } from '../assets'
 
 
@@ -41,8 +42,16 @@ export const navLinks = [
     title: "About",
   },
   {
-    id: "work",
-    title: "Work",
+    id: "projects",
+    title: "Projects",
+  },
+  {
+    id: "skills",
+    title: "Skills",
+  },
+  {
+    id: "experience",
+    title: "Experience",
   },
   {
     id: "contact",
@@ -52,12 +61,12 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Web Developer",
-    icon: web,
-  },
-  {
     title: "React Native Developer",
     icon: mobile,
+  },
+  {
+    title: "Web Developer",
+    icon: web,
   },
   {
     title: "Backend Developer",
@@ -71,12 +80,8 @@ const services = [
 
 const technologies = [
   {
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS 3",
-    icon: css,
+    name: "React Native",
+    icon: reactjs,
   },
   {
     name: "JavaScript",
@@ -87,40 +92,12 @@ const technologies = [
     icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg",
   },
   {
-    name: "React JS",
-    icon: reactjs,
-  },
-  {
-    name: "React Native",
-    icon: reactjs,
-  },
-  {
-    name: "Flutter",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg",
-  },
-  {
-    name: "Dart",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/dart/dart-original.svg",
-  },
-  {
-    name: "Redux Toolkit",
-    icon: redux,
-  },
-  {
     name: "Tailwind CSS",
     icon: tailwind,
   },
   {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
     name: "MongoDB",
     icon: mongodb,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
   },
   {
     name: "git",
@@ -133,30 +110,6 @@ const technologies = [
   {
     name: "docker",
     icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg",
-  },
-  {
-    name: "GSAP",
-    icon: gsap,
-  },
-  {
-    name: "Framer Motion",
-    icon: framer,
-  },
-  {
-    name: "MySQL",
-    icon: mysql,
-  },
-  {
-    name: "Express.js",
-    icon: express,
-  },
-  {
-    name: "AWS",
-    icon: aws,
-  },
-  {
-    name: "Material-UI",
-    icon: mui,
   },
 ];
 
@@ -215,6 +168,32 @@ const projects = [
     ],
     image: flood1,
     source_code_link: "https://github.com/Aanwar04",
+  },
+  {
+    name: "Rider App – Real-Time Delivery Management",
+    description:
+      "A mobile application designed to streamline delivery operations for riders. The app enables riders to receive delivery requests, track parcels in real time, and update their status from pickup to delivery.",
+    tags: [
+      { name: "react-native", color: "blue-text-gradient" },
+      { name: "real-time", color: "green-text-gradient" },
+      { name: "notifications", color: "pink-text-gradient" },
+      { name: "tracking", color: "blue-text-gradient" },
+    ],
+    image: rider,
+    source_code_link: "https://github.com/Aanwar04",
+    details: {
+      features: [
+        "Real-Time Notifications: Riders receive instant updates for new delivery requests.",
+        "Location Tracking: Tracks rider movement during deliveries, providing accurate ETA and route updates.",
+        "Live Data Integration: Works with real customer and restaurant data to ensure accurate and efficient delivery operations.",
+        "Future Enhancements: Optimized route management, advanced notifications, and additional delivery analytics.",
+      ],
+      technologies: [
+        "React Native for cross-platform mobile development",
+        "Real-time data handling and notifications",
+        "Planned integration with enhanced tracking and analytics",
+      ],
+    },
   },
   {
     name: "Online Ambulance Service",

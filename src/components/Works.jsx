@@ -20,6 +20,7 @@ const ProjectCard = ({
   source_code_link,
 }) => {
   const cardRef = useRef(null);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   useEffect(() => {
     const el = cardRef.current;
@@ -44,6 +45,42 @@ const ProjectCard = ({
       }
     );
   }, []);
+
+  // Simulate loading for demonstration
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000 + index * 200); // Stagger loading times
+    return () => clearTimeout(timer);
+  }, [index]);
+
+  if (isLoading) {
+    return (
+      <div ref={cardRef}>
+        <div className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full">
+          {/* Image skeleton */}
+          <div className="w-full h-[230px] bg-gray-700 rounded-2xl animate-pulse"></div>
+          
+          {/* Content skeleton */}
+          <div className="mt-5">
+            <div className="h-6 bg-gray-700 rounded animate-pulse w-3/4"></div>
+            <div className="mt-2 space-y-2">
+              <div className="h-4 bg-gray-700 rounded animate-pulse"></div>
+              <div className="h-4 bg-gray-700 rounded animate-pulse w-5/6"></div>
+              <div className="h-4 bg-gray-700 rounded animate-pulse w-4/6"></div>
+            </div>
+          </div>
+          
+          {/* Tags skeleton */}
+          <div className="mt-4 flex flex-wrap gap-2">
+            <div className="h-4 bg-gray-700 rounded animate-pulse w-16"></div>
+            <div className="h-4 bg-gray-700 rounded animate-pulse w-20"></div>
+            <div className="h-4 bg-gray-700 rounded animate-pulse w-14"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div ref={cardRef}>
@@ -79,18 +116,18 @@ const ProjectCard = ({
         )}
 
         <div className={image ? "mt-5" : "mt-0"}>
-          <h3 className="font-bold text-[24px] bg-gradient-to-r from-[#915EFF] to-blue-400 bg-clip-text text-transparent drop-shadow-md">{name}</h3>
-          <p className="mt-2 text-secondary text-[14px]">{description}</p>
+          <h3 className="font-bold text-[22px] leading-7 bg-gradient-to-r from-[#915EFF] via-[#60A5FA] to-[#34D399] bg-clip-text text-transparent">{name}</h3>
+          <p className="mt-2 text-[14px] leading-6 desc-paragraph">{description}</p>
         </div>
 
         <div className="mt-4 flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <p
+            <span
               key={`${name}-${tag.name}`}
-              className={`text-[14px] ${tag.color}`}
+              className={`chip chip-glass ${tag.color}`}
             >
               #{tag.name}
-            </p>
+            </span>
           ))}
         </div>
 
@@ -140,19 +177,19 @@ const Works = () => {
   return (
     <>
       <div>
-        <p className={`${styles.sectionSubText}`}>My work</p>
-        <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
+        <p className={`${styles.sectionSubText} bg-gradient-to-r from-[#A78BFA] via-[#60A5FA] to-[#34D399] bg-clip-text text-transparent`}>My work</p>
+        <h2 className={`${styles.sectionHeadText} bg-gradient-to-r from-[#915EFF] via-[#60A5FA] to-[#34D399] bg-clip-text text-transparent`}>Projects</h2>
       </div>
 
       <div className="w-full flex">
-        <p className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
+        <p className="mt-3 text-[17px] max-w-3xl leading-[30px] desc-paragraph decorated">
           Following projects showcase my skills and experience through real-world examples of my work. Each project is briefly described with links to code repositories and live demos. It reflects my ability to solve complex problems, work with different technologies, and manage projects effectively.
         </p>
       </div>
 
       <div className="works-container mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5">
         {projects.map((project, index) => (
-          <div key={`project-${index}`} className="project-card">
+          <div key={`project-${index}`} className="project-card transition-shadow duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
             <ProjectCard index={index} {...project} />
           </div>
         ))}
@@ -161,4 +198,4 @@ const Works = () => {
   );
 };
 
-export default SectionWrapper(Works, "");
+export default SectionWrapper(Works, "projects");

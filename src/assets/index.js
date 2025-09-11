@@ -26,6 +26,7 @@ import tailwind from "./tech/tailwind.png";
 import threejs from "./tech/threejs.svg";
 import flood1 from './flood1.jpeg';
 import flood2 from './flood2.jpeg';
+import rider from './rider.jpeg';
 
 export {
   logo,
@@ -56,4 +57,5 @@ export {
   threejs,
   flood1,
   flood2,
+  rider,
 };
